@@ -1,12 +1,20 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Dashboard from "./components/pages/Dashboard";
-import Off from "./components/pages/Off/Off"; // Yangi Off.jsx komponentini yarating
+import Off from "./components/pages/Off/Off";
 import { TelegramProvider } from "../context/TelegramContext";
 
+const ADMIN_IDS = ["7521806735", "6834662342"];
+
 function App() {
-  const [botStatus, setBotStatus] = useState(null); // null = yuklanmoqda, "on" yoki "off"
+  const [botStatus, setBotStatus] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  // Telegram bo'lmasa (Chrome dev) → default dev ID ishlatiladi
+  const tgUserId = String(
+    window.Telegram?.WebApp?.initDataUnsafe?.user?.id || "7521806735"
+  );
+  const isAdmin = ADMIN_IDS.includes(tgUserId);
 
   useEffect(() => {
     fetch("https://tezpremium.uz/webapp/settings.php")
@@ -15,23 +23,22 @@ function App() {
         if (data.ok && data.settings?.bot_status) {
           setBotStatus(data.settings.bot_status);
         } else {
-          // Agar xato bo'lsa, default "on" qilib qo'yamiz yoki off
           setBotStatus("on");
         }
         setLoading(false);
       })
       .catch((err) => {
         console.error("Settings yuklashda xato:", err);
-        setBotStatus("on"); // Internet yo'q bo'lsa ham ishlasin
+        setBotStatus("on");
         setLoading(false);
       });
   }, []);
 
   if (loading) {
-    return <div></div>; // Yoki chiroyli loader qo'ying
+    return <div></div>;
   }
 
-  const MainComponent = botStatus === "on" ? Dashboard : Off;
+  const MainComponent = isAdmin || botStatus === "on" ? Dashboard : Off;
 
   return (
     <TelegramProvider>
