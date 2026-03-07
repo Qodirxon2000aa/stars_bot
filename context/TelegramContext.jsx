@@ -17,7 +17,7 @@ export const TelegramProvider = ({ children }) => {
     return initData && initData.length > 0 ? initData : null;
   };
 
-  /* ========================= 🌐 FETCH HELPER ========================= */
+  /* ========================= 🌐 FETCH HELPER (GET) ========================= */
   const apiFetch = async (endpoint, extraParams = {}) => {
     const initData = getInitData();
     const extraQuery = new URLSearchParams(extraParams).toString();
@@ -34,11 +34,23 @@ export const TelegramProvider = ({ children }) => {
     return res.json();
   };
 
-  /* ========================= 👤 USER FETCH ========================= */
+  /* ========================= 👤 USER FETCH (POST) ========================= */
   const fetchUserFromApi = async () => {
     try {
       setLoading(true);
-      const data = await apiFetch("get_user.php");
+      const initData = getInitData();
+
+      const body = new URLSearchParams(
+        initData ? { initData } : { user_id: DEV_USER_ID }
+      );
+
+      const res = await fetch("https://tezpremium.uz/webapp/get_user.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: body.toString(),
+      });
+
+      const data = await res.json();
       const userData = data.ok
         ? { balance: data.data?.balance || "0", ...data.data }
         : { balance: "0" };
