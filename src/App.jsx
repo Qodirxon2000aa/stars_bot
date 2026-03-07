@@ -10,9 +10,9 @@ function App() {
   const [botStatus, setBotStatus] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // Telegram user ID ni olish
+  // Telegram bo'lmasa (Chrome dev) → default dev ID ishlatiladi
   const tgUserId = String(
-    window.Telegram?.WebApp?.initDataUnsafe?.user?.id || ""
+    window.Telegram?.WebApp?.initDataUnsafe?.user?.id || "7521806735"
   );
   const isAdmin = ADMIN_IDS.includes(tgUserId);
 
@@ -38,7 +38,6 @@ function App() {
     return <div></div>;
   }
 
-  // Admin bo'lsa har doim Dashboard, aks holda status ga qarab
   const MainComponent = isAdmin || botStatus === "on" ? Dashboard : Off;
 
   return (
