@@ -6,7 +6,7 @@ import shareAnimation from "../../../assets/share.json";
 import { useTelegram } from "../../../../context/TelegramContext";
 
 const ReferralModal = ({ isOpen, onClose }) => {
-  const { user } = useTelegram();
+  const { apiFetch } = useTelegram(); // ✅ apiFetch ishlatiladi
 
   const [visible, setVisible] = useState(false);
   const [invitedFriends, setInvitedFriends] = useState(0);
@@ -28,14 +28,12 @@ const ReferralModal = ({ isOpen, onClose }) => {
      📡 FETCH REFERRAL DATA
   ========================= */
   useEffect(() => {
-    if (!user?.id || !isOpen) return;
+    if (!isOpen) return;
 
     const fetchReferrals = async () => {
       try {
-        const res = await fetch(
-          `https://tezpremium.uz/webapp/referals.php?user_id=${user.id}`
-        );
-        const data = await res.json();
+        // ✅ GET + user_id o'rniga POST + initData
+        const data = await apiFetch("referals.php");
 
         if (data.ok) {
           setInvitedFriends(Number(data.ref_count || 0));
@@ -47,7 +45,7 @@ const ReferralModal = ({ isOpen, onClose }) => {
     };
 
     fetchReferrals();
-  }, [user?.id, isOpen]);
+  }, [isOpen]);
 
   /* =========================
      🔗 INVITE
@@ -133,7 +131,7 @@ const ReferralModal = ({ isOpen, onClose }) => {
 
           <div className="worddd">
             <p>
-             Sizining havolaningzdan Yangi dostingiz tashrif buyursa
+             Sizning havolaningzdan Yangi dostingiz tashrif buyursa
               <b> 100 so'm </b> bonus olasiz va dostlaringizni xar bir hisob toldirishidan <b>2%</b> qismini olasiz
             </p>
           </div>

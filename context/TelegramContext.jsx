@@ -201,6 +201,7 @@ export const TelegramProvider = ({ children }) => {
         createPremiumOrder,
         createGiftOrder,
         refreshUser,
+        apiFetch, // ✅ export qilindi
       }}
     >
       {children}
