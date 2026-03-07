@@ -21,7 +21,7 @@ export const TelegramProvider = ({ children }) => {
     const initData = getInitData();
 
     const body = {
-      initData: initData ?? `user_id=${DEV_USER_ID}`,
+      ...(initData ? { initData } : { user_id: DEV_USER_ID }),
       ...params,
     };
 
