@@ -12,28 +12,34 @@ export const TelegramProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const fetchedRef = useRef(false);
 
-  // initData yoki dev fallback qaytaradi
   const getInitData = () => {
     const initData = window.Telegram?.WebApp?.initData;
     return initData && initData.length > 0 ? initData : null;
   };
 
-  // Fetch helper — initData bo'lsa POST, bo'lmasa dev GET
+  /* ========================= 🌐 FETCH HELPER ========================= */
   const apiFetch = async (endpoint, extraParams = {}) => {
     const initData = getInitData();
 
     if (initData) {
-      const body = new URLSearchParams({ init_data: initData, ...extraParams });
-      const res = await fetch(`https://tezpremium.uz/webapp/${endpoint}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: body.toString(),
+      // REAL Telegram — GET orqali initData yuborish
+      const params = new URLSearchParams({
+        initData: initData,
+        ...extraParams,
       });
+      const res = await fetch(
+        `https://tezpremium.uz/webapp/${endpoint}?${params}`
+      );
       return res.json();
     } else {
       // DEV MODE — user_id bilan GET
-      const params = new URLSearchParams({ user_id: DEV_USER_ID, ...extraParams });
-      const res = await fetch(`https://tezpremium.uz/webapp/${endpoint}?${params}`);
+      const params = new URLSearchParams({
+        user_id: DEV_USER_ID,
+        ...extraParams,
+      });
+      const res = await fetch(
+        `https://tezpremium.uz/webapp/${endpoint}?${params}`
+      );
       return res.json();
     }
   };
@@ -73,7 +79,9 @@ export const TelegramProvider = ({ children }) => {
   const fetchPayments = async () => {
     try {
       const data = await apiFetch("payments.php");
-      setPayments(data.ok && Array.isArray(data.payments) ? data.payments : []);
+      setPayments(
+        data.ok && Array.isArray(data.payments) ? data.payments : []
+      );
     } catch (err) {
       console.error("❌ fetchPayments error:", err);
       setPayments([]);
