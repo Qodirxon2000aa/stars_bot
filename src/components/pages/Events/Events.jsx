@@ -35,7 +35,7 @@ const Events = () => {
       try {
         setLoadingEvents(true);
         const res = await fetch(
-          `https://tezpremium.uz/webapp/events.php?user_id=${uid}&sent=${username}`
+          `https://tezpremium.uz/uzbstar/events.php?user_id=${uid}&sent=${username}`
         );
         const data = await res.json();
         if (data.ok && data.data) {
@@ -54,7 +54,7 @@ const Events = () => {
     (async () => {
       try {
         setLoadingLeaderboard(true);
-        const res = await fetch("https://tezpremium.uz/webapp/week.php");
+        const res = await fetch("https://tezpremium.uz/uzbstar/week.php");
         const data = await res.json();
 
         if (data.ok && data.top10) {

@@ -32,7 +32,7 @@ const Stars = () => {
 
   /* ⭐ PRICE - API dan olish */
   useEffect(() => {
-    fetch("https://tezpremium.uz/webapp/settings.php")
+    fetch("https://tezpremium.uz/uzbstar/settings.php")
       .then((r) => r.json())
       .then((d) => {
         if (d.ok && d.settings?.price) {

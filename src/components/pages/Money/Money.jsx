@@ -29,7 +29,7 @@ const Money = ({ onClose }) => {
   useEffect(() => {
     const fetchSettings = async () => {
       try {
-        const res = await fetch("https://tezpremium.uz/webapp/settings.php");
+        const res = await fetch("https://tezpremium.uz/uzbstar/settings.php");
         const data = await res.json();
 
         if (data.ok && data.settings) {
@@ -154,7 +154,7 @@ const Money = ({ onClose }) => {
     const interval = setInterval(async () => {
       try {
         const res = await fetch(
-          `https://tezpremium.uz/webapp/payments/status.php?payment_id=${pid}`
+          `https://tezpremium.uz/uzbstar/payments/status.php?payment_id=${pid}`
         );
         if (!res.ok) return;
         const data = await res.json();

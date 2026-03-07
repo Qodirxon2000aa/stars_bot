@@ -27,7 +27,7 @@ export const TelegramProvider = ({ children }) => {
 
     let res;
     try {
-      res = await fetch(`https://tezpremium.uz/webapp/${endpoint}`, {
+      res = await fetch(`https://tezpremium.uz/uzbstar/${endpoint}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),

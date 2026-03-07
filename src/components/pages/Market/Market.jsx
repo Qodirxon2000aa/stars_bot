@@ -29,8 +29,8 @@ const Market = ({ onClose }) => {
   const fetchGifts = async () => {
     const url =
       type === "all"
-        ? "https://tezpremium.uz/webapp/giftlar.php"
-        : `https://tezpremium.uz/webapp/giftlar.php?type=${type}`;
+        ? "https://tezpremium.uz/uzbstar/giftlar.php"
+        : `https://tezpremium.uz/uzbstar/giftlar.php?type=${type}`;
 
     try {
       const r = await fetch(url);
