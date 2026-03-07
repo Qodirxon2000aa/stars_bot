@@ -6,7 +6,7 @@ import MoneyImage from "../../../assets/money.json"; // Lottie JSON fayl
 import Lottie from "lottie-react";
 
 const Money = ({ onClose }) => {
-  const { user, refreshUser } = useTelegram();
+  const { refreshUser, apiFetch } = useTelegram(); // ✅ apiFetch qo'shildi
   const [amount, setAmount] = useState(""); // formatlangan ko'rinish
   const [rawAmount, setRawAmount] = useState(""); // faqat raqamlar
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -120,20 +120,10 @@ const Money = ({ onClose }) => {
       return;
     }
 
-    if (!user?.id) {
-      setErrorMsg("Foydalanuvchi ID topilmadi");
-      return;
-    }
-
     setIsSubmitting(true);
     try {
-      const actualUserId = user.isTelegram ? user.id : "7521806735";
-      const res = await fetch(
-        `https://tezpremium.uz/webapp/payments/review.php?user_id=${actualUserId}&amount=${numAmount}`
-      );
-
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const data = await res.json();
+      // ✅ GET + user_id o'rniga apiFetch bilan POST + initData
+      const data = await apiFetch("payments/review.php", { amount: numAmount });
 
       if (data.ok && data.payment_id) {
         setPaymentId(data.payment_id);
@@ -141,9 +131,7 @@ const Money = ({ onClose }) => {
         setTimeLeft(600);
 
         // Agar review.php javobida card bo'lsa — undan, aks holda global settingsdan
-        const cardNumber = data.card
-          ? data.card
-          : globalCardNumber;
+        const cardNumber = data.card ? data.card : globalCardNumber;
 
         setCardInfo({
           number: cardNumber,
@@ -264,7 +252,7 @@ const Money = ({ onClose }) => {
             <div className="waiting-spinner"></div>
             <h3>To'lovni yakunlang</h3>
             <p>Kartangizdan to'lovni amalga oshiring</p>
-            <p>Belgilangan tolovdan 1 so’m ko’p ham kam ham tashlamang!</p>
+            <p>Belgilangan tolovdan 1 so'm ko'p ham kam ham tashlamang!</p>
             <br />
 
             <div className="payment-amount-display">
