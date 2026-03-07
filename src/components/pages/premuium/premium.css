@@ -1,0 +1,393 @@
+/* premium.css */
+
+.premium-overlay {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 0 6px;            /* 👈 faqat 2px yonlardan */
+  box-sizing: border-box;
+}
+
+.premium-modal {
+  width: 100%;
+  border-radius: 18px;
+  color: #fff;
+  position: relative;
+}
+
+
+
+.modal-title {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin: 0 0 8px 0;
+}
+
+.star {
+  color: #00d4ff;
+  font-size: 28px;
+}
+
+.modal-subtitle {
+  text-align: center;
+  color: #aaa;
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+.section-title {
+  font-size: 18px;
+  margin: 24px 0 12px 0;
+   font-size: 13px;
+  color: #aaa;
+}
+
+.best-discount {
+  background: #00aaff;
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 14px;
+  float: right;
+}
+
+.username-wrapper {
+  display: flex;
+  gap: 10px;
+  background: #1c1c1e;
+  border-radius: 18px;
+  padding: 12px;
+  margin-bottom: 10px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6e00ff, #00d4ff);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 18px;
+  margin-right: 12px;
+}
+
+.username-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  outline: none;
+}
+
+.self-btn {
+  background: none;
+  border: none;
+  color: #00aaff;
+  font-size: 14px;
+  cursor: pointer;
+  margin-right: 12px;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.plans-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.plan-card {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  border: 2px solid transparent;
+}
+
+.plan-card.selected {
+  border-color: #00d4ff;
+  background: rgba(0, 212, 255, 0.1);
+}
+
+.radio-circle {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #555;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 16px;
+}
+
+.radio-inner {
+  width: 12px;
+  height: 12px;
+  background: #00d4ff;
+  border-radius: 50%;
+}
+
+.plan-info {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.duration {
+  font-size: 16px;
+}
+
+.discount {
+  background: #00aaff;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 14px;
+}
+
+.price {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.buy-button {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, #00d4ff, #0099ff);
+  border: none;
+  border-radius: 16px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 24px;
+}
+
+
+.premium-page-container {
+  min-height: 100vh;
+  background: #000;
+  color: #fff;
+  padding: 20px;
+}
+
+.premium-page {
+  max-width: 420px;
+  margin: 0 auto;
+  padding-top: 20px;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 24px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+/* Qolgan stilarni oldingidek qoldiring */
+.modal-title { /* ... */ }
+.modal-subtitle { /* ... */ }
+/* va hokazo */
+
+.username-box {
+  display: flex;
+  gap: 10px;
+  background: #1c1c1e;
+  border-radius: 18px;
+  padding: 12px;
+  margin-bottom: 10px;
+}
+
+.username-box input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 15px;
+}
+
+.username-box input::placeholder {
+  color: #777;
+}
+
+.username-box button {
+  background: none;
+  border: none;
+  color: #4da6ff;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.user-loading {
+  color: #aaa;
+  font-size: 14px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.user-preview {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #2a2a2d;
+  border-radius: 16px;
+  padding: 12px;
+  margin-bottom: 16px;
+}
+
+.user-preview img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-preview .name {
+  font-weight: 600;
+  color: #fff;
+}
+
+.user-preview .username {
+  font-size: 13px;
+  color: #aaa;
+}
+
+.error {
+  background: #ff3b30;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  margin: 10px 0;
+  color: #fff;
+}
+
+.success {
+  background: #34c759;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  margin: 10px 0;
+  color: #fff;
+}
+
+/* 🎬 PREMIUM VIDEO */
+.premium-video {
+  width: 200px;
+  height: 200px;
+  border-radius: 18px;
+  overflow: hidden;
+  margin-bottom: 12px;
+  background: #000;
+}
+
+.premium-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+
+
+
+/* ===== TELEGRAM STYLE USER INPUT ===== */
+
+.tg-user-section {
+  border-radius: 16px;
+  margin-bottom: 14px;
+}
+
+.tg-user-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.tg-user-title {
+  font-size: 13px;
+  color: #aaa;
+}
+
+.tg-self-btn {
+  background: none;
+  border: none;
+  color: #4da6ff;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* INPUT */
+.tg-user-input {
+  width: 100%;
+  background: #2a2a2d;
+  border: none;
+  border-radius: 14px;
+  padding: 12px 14px;
+  color: #fff;
+  font-size: 15px;
+  outline: none;
+}
+
+.tg-user-input::placeholder {
+  color: #777;
+}
+
+/* USER CHIP (rasmdagi kabi) */
+.tg-user-chip {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #2a2a2d;
+  border-radius: 18px;
+  padding: 10px 12px;
+}
+
+.tg-user-chip img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.tg-user-info {
+  flex: 1;
+}
+
+.tg-user-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.tg-user-username {
+  font-size: 13px;
+  color: #aaa;
+}
+
+.tg-user-clear {
+  background: none;
+  border: none;
+  color: #777;
+  font-size: 20px;
+  cursor: pointer;
+}

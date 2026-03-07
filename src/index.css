@@ -1,0 +1,35 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* To'liq ekran va safe area wrapper */
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Telegram WebApp safe area wrapper */
+.tg-safe-area {
+  background: #1A2026;
+  width: 100vw;
+  height: 100vh;
+  padding: calc(0vw + env(safe-area-inset-top))
+           calc(0vw + env(safe-area-inset-right))
+           calc(0vw + env(safe-area-inset-bottom))
+           calc(0vw + env(safe-area-inset-left));
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Agar xohlasang, ichki kontent scrollable bo'lsa */
+.tg-safe-area > * {
+  flex: 1;
+}

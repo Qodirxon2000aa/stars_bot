@@ -1,0 +1,37 @@
+.floating-buttons {
+  position: fixed;
+  bottom: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  pointer-events: none; /* faqat button ichidagi elementlar ishlaydi */
+}
+
+.float-btn {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 10px 15px;
+  cursor: pointer;
+  pointer-events: all; /* hover va click ishlashi uchun */
+  transition: transform 0.2s ease;
+}
+
+.float-btn:hover {
+  transform: scale(1.05);
+}
+
+.float-btn img {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.float-btn h5 {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.2;
+}

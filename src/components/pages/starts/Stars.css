@@ -1,0 +1,432 @@
+/* ================== WRAPPER ================== */
+.stars-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 0 6px;            /* 👈 faqat 2px yonlardan */
+  box-sizing: border-box;
+}
+
+/* ================== CARD ================== */
+.stars-card {
+  width: 100%;
+  max-width: 100%;
+  border-radius: 20px;
+  color: #fff;
+}
+
+/* ================== TITLES ================== */
+.stars-title {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.stars-subtitle {
+  text-align: center;
+  color: #aaa;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+/* ================== BALANCE ================== */
+.stars-balance {
+  background: #2c2c2e;
+  padding: 12px;
+  border-radius: 12px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+/* ================== LABEL & INPUT ================== */
+label {
+  font-size: 13px;
+  color: #aaa;
+}
+
+input {
+  width: 100%;
+  padding: 14px;
+  margin-top: 6px;
+  border-radius: 12px;
+  border: none;
+  background: #2c2c2e;
+  color: #fff;
+  box-sizing: border-box;
+}
+
+/* ================== USERNAME ROW ================== */
+.username-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.username-row button {
+  background: #007aff;
+  border: none;
+  border-radius: 12px;
+  padding: 0 14px;
+  color: #fff;
+  font-weight: 600;
+}
+
+/* ================== OR TEXT ================== */
+.or-text {
+  text-align: center;
+  color: #777;
+  margin: 16px 0 8px;
+}
+
+/* ================== PRESETS ================== */
+.preset-list {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.preset {
+  width: 100%;
+  background: #2c2c2e;
+  padding: 6px;
+  border-radius: 14px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  border: 2px solid transparent;
+  box-sizing: border-box;
+}
+
+.preset.active {
+  border-color: #007aff;
+  background: #1a2b45;
+}
+
+/* ================== TOTAL ================== */
+.total {
+  margin: 16px 0;
+  text-align: center;
+  font-size: 16px;
+}
+
+/* ================== BUTTON ================== */
+.buy-btn1 {
+ width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, #00d4ff, #0099ff);
+  border: none;
+  border-radius: 16px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* ================== ALERTS ================== */
+.error {
+  background: #ff3b30;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.success {
+  background: #34c759;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* ================== USERNAME BOX ================== */
+.username-box {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  background: #1c1c1e;
+  border-radius: 18px;
+  padding: 12px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.username-box input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 15px;
+}
+
+.username-box button {
+  background: none;
+  border: none;
+  color: #4da6ff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ================== USER PREVIEW ================== */
+.user-preview {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #2a2a2d;
+  border-radius: 16px;
+  padding: 12px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+}
+
+.user-preview img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-preview .name {
+  font-weight: 600;
+  color: #fff;
+}
+
+.user-preview .username {
+  font-size: 13px;
+  color: #aaa;
+}
+
+/* ================== USERNAME INPUT ================== */
+.username-input {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 18px;
+  background: #1c1c1e;
+  border: 2px solid #3a3a3c;
+  margin-bottom: 6px;
+  box-sizing: border-box;
+}
+
+.username-input.filled {
+  border-color: #007aff;
+}
+
+.username-input input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 15px;
+}
+
+.username-input input::placeholder {
+  color: #777;
+}
+
+.username-input button {
+  background: none;
+  border: none;
+  color: #4da6ff;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* ================== AVATAR ================== */
+.input-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #444;
+}
+
+/* ================== VIDEO ================== */
+.vd {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stars-video {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 18px;
+  overflow: hidden;          /* 🔥 MUHIM */
+  background: #000;          /* ixtiyoriy */
+}
+
+/* Lottie ichidagi element */
+.stars-video > div {
+  width: 100%;
+  height: 100%;
+}
+
+
+
+/* ================== TELEGRAM USER ================== */
+.tg-user-section {
+  width: 100%;
+  border-radius: 16px;
+  margin-bottom: 14px;
+}
+
+.tg-user-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.tg-user-title {
+  font-size: 13px;
+  color: #aaa;
+}
+
+.tg-self-btn {
+  background: none;
+  border: none;
+  color: #4da6ff;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.tg-user-input {
+  width: 100%;
+  background: #2a2a2d;
+  border: none;
+  border-radius: 14px;
+  padding: 10px 14px;
+  color: #fff;
+  font-size: 15px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.tg-user-chip {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #2a2a2d;
+  border-radius: 18px;
+  padding: 4px 12px;
+  box-sizing: border-box;
+}
+.inputs{
+  width: 100%;
+  height: 20px;
+}
+
+.tg-user-chip img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.tg-user-info {
+  flex: 1;
+}
+
+.tg-user-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.tg-user-username {
+  font-size: 13px;
+  color: #aaa;
+}
+
+.tg-user-clear {
+  background: none;
+  border: none;
+  color: #777;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+
+/* ================= SHOW MORE ANIMATION ================= */
+
+.preset-list.more {
+  overflow: hidden;
+  transform-origin: top;
+}
+
+/* FADE IN */
+.fade-in {
+  animation: fadeInMore 0.35s ease forwards;
+  pointer-events: auto;
+}
+
+/* FADE OUT */
+.fade-out {
+  animation: fadeOutMore 0.3s ease forwards;
+  pointer-events: none;
+}
+
+@keyframes fadeInMore {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scaleY(0.95);
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scaleY(1);
+    max-height: 600px;
+  }
+}
+
+@keyframes fadeOutMore {
+  from {
+    opacity: 1;
+    transform: translateY(0) scaleY(1);
+    max-height: 600px;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-6px) scaleY(0.95);
+    max-height: 0;
+  }
+}
+
+
+.show-more-btn{
+  width: 100%;
+  height: 40px;
+  border-radius: 12px;
+  color: #fff;
+  margin-top: 15px;
+  background: #2a2a2d;
+  border: none;
+  border-radius: 14px;
+  padding: 10px 14px;
+  color: #fff;
+  font-size: 15px;
+  outline: none;
+  box-sizing: border-box;
+  }
+
+
+
+
+
+

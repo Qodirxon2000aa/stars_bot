@@ -1,0 +1,868 @@
+/* ===================== DESIGN SYSTEM ===================== */
+:root {
+  --bg-main: #1A2026;
+  --bg-card: #2A323A;
+  --accent: #00d4ff;
+  --accent-soft: rgba(0, 212, 255, 0.25);
+  --text-muted: #9aa4af;
+  --success: #4ade80;
+  --warning: #fbbf24;
+}
+
+/* ===================== OVERLAY ===================== */
+.money-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(26, 32, 38, 0.85);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 8px;
+  animation: overlayFadeIn 0.4s ease-out forwards;
+}
+
+.money-modal-overlay.fade-out {
+  animation: overlayFadeOut 0.35s ease-in forwards;
+}
+
+/* ===================== MODAL ===================== */
+.money-modal {
+  position: relative;
+  background: var(--bg-main);
+  border-radius: 22px;
+  width: 92%;
+  max-width: 420px;
+  padding: 26px;
+  color: #fff;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.55);
+  animation: modalFadeUp 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.money-modal.fade-out {
+  animation: modalFadeDown 0.35s ease-in forwards;
+}
+
+/* ===================== CLOSE ===================== */
+.money-close-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--accent-soft);
+  background: rgba(0, 212, 255, 0.12);
+  color: var(--accent);
+  font-size: 22px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+}
+
+.money-close-btn:hover {
+  background: rgba(0, 212, 255, 0.2);
+  transform: scale(1.05);
+}
+
+/* ===================== TITLE ===================== */
+.money-title {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 26px;
+  background: linear-gradient(135deg, #ffffff, var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ===================== ERROR ===================== */
+.error-message {
+  background: rgba(255, 80, 80, 0.15);
+  border: 1px solid rgba(255, 80, 80, 0.35);
+  color: #ff8a8a;
+  padding: 14px;
+  border-radius: 14px;
+  text-align: center;
+  margin-bottom: 18px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* ===================== METHOD ===================== */
+.method-selected {
+  background: rgba(0, 212, 255, 0.12);
+  border: 1px solid var(--accent-soft);
+  border-radius: 16px;
+  padding: 16px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+
+/* ===================== INPUT ===================== */
+.money-amount {
+  margin-bottom: 12px;
+}
+
+.money-amount label {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.money-amount input {
+  width: 100%;
+  padding: 16px;
+  border-radius: 16px;
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 20px;
+  text-align: center;
+  transition: all 0.25s ease;
+}
+
+.money-amount input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.amount-hint {
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* ===================== SUBMIT ===================== */
+.money-submit-btn {
+  width: 100%;
+  margin-top: 22px;
+  padding: 16px;
+  background: linear-gradient(135deg, var(--accent), #00a8cc);
+  color: #000;
+  border: none;
+  border-radius: 16px;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+}
+
+.money-submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 212, 255, 0.4);
+}
+
+.money-submit-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.money-submit-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ===================== WAITING SCREEN COMPONENTS ===================== */
+.money-waiting {
+  text-align: center;
+}
+
+.money-waiting h3 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  background: linear-gradient(135deg, #ffffff, var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.money-waiting > p {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+.payment-amount-display {
+  background: linear-gradient(135deg, var(--bg-card), #1f262d);
+  border-radius: 18px;
+  padding: 20px;
+  border: 2px solid rgba(0, 212, 255, 0.2);
+  margin-bottom: 16px;
+  transition: all 0.3s ease;
+}
+
+.payment-amount-display:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 212, 255, 0.2);
+}
+
+.amount-info {
+  text-align: center;
+  margin-bottom: 12px;
+ 
+}
+
+.amount-label {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.amount-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--accent);
+  text-shadow: 0 2px 10px rgba(0, 212, 255, 0.3);
+}
+
+.card-details {
+  margin-top: 16px;
+}
+
+.card-info {
+  background: linear-gradient(135deg, var(--bg-card), #1f262d);
+  border-radius: 18px;
+  padding: 20px;
+  border: 2px solid rgba(0, 212, 255, 0.2);
+  margin-bottom: 12px;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-info:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 212, 255, 0.2);
+}
+
+.card-label {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.card-number {
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.card-owner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 12px 16px;
+  border-radius: 12px;
+  margin-top: 12px;
+}
+
+.card-owner span:first-child {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.card-owner span:last-child {
+  font-size: 15px;
+  color: #fff;
+  font-weight: 700;
+}
+
+.deadline.timer-active {
+  background: linear-gradient(135deg, rgba(255, 80, 80, 0.2), rgba(255, 80, 80, 0.1));
+  border: 2px solid rgba(255, 80, 80, 0.5);
+  border-radius: 18px;
+  padding: 16px;
+  text-align: center;
+  color: #ff8a8a;
+  margin: 16px 0;
+  font-weight: 600;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 4px 15px rgba(255, 80, 80, 0.2);
+}
+
+.clock-icon {
+  font-size: 24px;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.timer-countdown {
+  font-size: 26px;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 2px 10px rgba(255, 138, 138, 0.5);
+}
+
+.waiting-note {
+  font-size: 13px;
+  color: var(--text-muted);
+  text-align: center;
+  line-height: 1.6;
+  margin-top: 16px;
+  padding: 12px;
+  background: rgba(0, 212, 255, 0.08);
+  border-radius: 12px;
+  border: 1px solid var(--accent-soft);
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* ===================== WARNING BOX ===================== */
+.warning-box {
+  background: rgba(251, 191, 36, 0.12);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  border-radius: 14px;
+  padding: 14px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.warning-box::before {
+  content: '⚠️';
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.warning-text {
+  font-size: 13px;
+  color: var(--warning);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* ===================== INFO BLOCKS ===================== */
+.payment-amount-display,
+.card-info {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 16px;
+  transition: all 0.25s ease;
+}
+
+.payment-amount-display:hover,
+.card-info:hover {
+  border-color: var(--accent-soft);
+  background: rgba(42, 50, 58, 0.8);
+}
+
+.info-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info-label {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.info-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.info-value.amount {
+  color: var(--accent);
+  font-size: 22px;
+}
+
+.copy-btn {
+  background: rgba(0, 212, 255, 0.15);
+  border: 1px solid var(--accent-soft);
+  color: var(--accent);
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.copy-btn::before {
+  content: '📋';
+  font-size: 14px;
+}
+
+.copy-btn:hover {
+  background: rgba(0, 212, 255, 0.25);
+  transform: scale(1.05);
+}
+
+.copy-btn:active {
+  transform: scale(0.95);
+}
+
+/* ===================== CUSTOM COPY BUTTONS ===================== */
+.copy-amount-btn,
+.copy-card-btn {
+  width: 120px;
+  height: 38px;
+  border-radius: 12px;
+  margin-top: 10px;
+  background: linear-gradient(135deg, var(--accent), #00a8cc);
+  border: none;
+  color: #000;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  box-shadow: 0 2px 8px rgba(0, 212, 255, 0.3);
+}
+
+.copy-amount-btn:hover,
+.copy-card-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 212, 255, 0.5);
+}
+
+.copy-amount-btn:active,
+.copy-card-btn:active {
+  transform: translateY(0);
+}
+
+.copy-amount-btn::before,
+.copy-card-btn::before {
+  content: '📋';
+  font-size: 16px;
+}
+
+/* ===================== CARD INFO DETAILS ===================== */
+.card-details {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.card-detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.card-detail-row:last-child {
+  margin-bottom: 0;
+}
+
+.card-detail-label {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.card-detail-value {
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+}
+
+/* ===================== TIMER ===================== */
+.deadline {
+  background: rgba(255, 80, 80, 0.15);
+  border: 1px solid rgba(255, 80, 80, 0.35);
+  border-radius: 16px;
+  padding: 14px;
+  text-align: center;
+  color: #ff8a8a;
+  margin-bottom: 16px;
+  font-weight: 600;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.deadline-time {
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(255, 138, 138, 0.4);
+}
+
+/* ===================== STATUS MESSAGE ===================== */
+.status-message {
+  background: rgba(0, 212, 255, 0.12);
+  border: 1px solid var(--accent-soft);
+  border-radius: 14px;
+  padding: 14px;
+  text-align: center;
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+/* ===================== RESULT ANIMATION ===================== */
+.result-animation,
+.payment-result-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(12px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  animation: resultFadeIn 0.3s ease-out forwards;
+}
+
+.result-icon {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 56px;
+  margin-bottom: 24px;
+  animation: resultPop 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+}
+
+.result-icon.success,
+.payment-result-overlay.success .result-icon {
+  background: linear-gradient(135deg, var(--success), #22c55e);
+  color: #fff;
+  box-shadow: 0 10px 40px rgba(74, 222, 128, 0.5);
+}
+
+.result-icon.error,
+.payment-result-overlay.error .result-icon {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: #fff;
+  box-shadow: 0 10px 40px rgba(239, 68, 68, 0.5);
+}
+
+.result-text {
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+  animation: resultTextFade 0.4s ease-out 0.2s forwards;
+  opacity: 0;
+  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* ===================== TOAST ===================== */
+.toast,
+.toast-notification {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, var(--accent), #00a8cc);
+  color: #000;
+  padding: 10px 28px;
+  border-radius: 16px;
+  font-size: 15px;
+  font-weight: 700;
+  box-shadow: 0 8px 24px rgba(0, 212, 255, 0.5);
+  z-index: 3000;
+  animation: toastSlideUp 0.3s ease-out forwards;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  
+}
+
+.toast-notification::before {
+  content: '✅';
+  font-size: 18px;
+}
+
+/* ===================== PAYMENT DISABLED ===================== */
+.payment-disabled-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 20px;
+  animation: overlayFadeIn 0.3s ease-out forwards;
+}
+
+.payment-disabled-box,
+.payment-disabled-modal {
+  background: linear-gradient(135deg, var(--bg-main), #252d35);
+  border: 2px solid rgba(255, 80, 80, 0.5);
+  border-radius: 24px;
+  padding: 36px 28px;
+  text-align: center;
+  max-width: 360px;
+  animation: modalFadeUp 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+  box-shadow: 0 20px 60px rgba(255, 80, 80, 0.3);
+}
+
+.payment-disabled-icon,
+.disabled-icon {
+  font-size: 64px;
+  margin-bottom: 20px;
+  animation: iconShake 0.5s ease-in-out;
+}
+
+.payment-disabled-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #ff8a8a;
+  margin-bottom: 14px;
+  text-shadow: 0 2px 10px rgba(255, 138, 138, 0.3);
+}
+
+.payment-disabled-modal h3 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #ff8a8a;
+  margin-bottom: 14px;
+  text-shadow: 0 2px 10px rgba(255, 138, 138, 0.3);
+}
+
+.payment-disabled-message,
+.payment-disabled-modal p {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+
+.payment-disabled-action,
+.bot-text {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--accent);
+  background: rgba(0, 212, 255, 0.15);
+  padding: 14px 24px;
+  border-radius: 14px;
+  border: 2px solid var(--accent-soft);
+  margin-top: 20px;
+  display: inline-block;
+  box-shadow: 0 4px 15px rgba(0, 212, 255, 0.2);
+}
+
+@keyframes iconShake {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-10deg); }
+  75% { transform: rotate(10deg); }
+}
+
+/* ===================== ANIMATIONS ===================== */
+@keyframes overlayFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes overlayFadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes modalFadeUp {
+  from { transform: translateY(24px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes modalFadeDown {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(20px); opacity: 0; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes resultFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes resultPop {
+  0% { transform: scale(0); opacity: 0; }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes resultTextFade {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes toastSlideUp {
+  from { opacity: 0; transform: translate(-50%, 20px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 480px) {
+  .money-modal {
+    width: 96%;
+    padding: 22px 18px;
+  }
+
+  .money-title {
+    font-size: 20px;
+  }
+
+  .waiting-title {
+    font-size: 18px;
+  }
+
+  .info-value.amount {
+    font-size: 20px;
+  }
+
+  .deadline-time {
+    font-size: 20px;
+  }
+
+  .result-icon {
+    width: 70px;
+    height: 70px;
+    font-size: 40px;
+  }
+
+  .result-text {
+    font-size: 18px;
+  }
+}
+
+/* ===================== SCROLLBAR ===================== */
+.money-modal::-webkit-scrollbar {
+  width: 6px;
+}
+
+.money-modal::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+.money-modal::-webkit-scrollbar-thumb {
+  background: var(--accent-soft);
+  border-radius: 10px;
+}
+
+.money-modal::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 212, 255, 0.4);
+}
+
+
+.payment-amount-display{
+   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+/* TELEGRAM USER SECTION - Stars bilan bir xil */
+.tg-user-section {
+  width: 100%;
+  border-radius: 16px;
+  margin-bottom: 14px;
+}
+
+.tg-user-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.tg-user-title {
+  font-size: 13px;
+  color: #aaa;
+}
+
+.tg-user-input {
+  width: 100%;
+  background: #2a2a2d;
+  border: none;
+  border-radius: 14px;
+  padding: 10px 14px;
+  color: #fff;
+  font-size: 15px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.tg-user-chip {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #2a2a2d;
+  border-radius: 18px;
+  padding: 4px 12px;
+  box-sizing: border-box;
+}
+
+.tg-user-info {
+  flex: 1;
+}
+
+.tg-user-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.tg-user-username {
+  font-size: 13px;
+  color: #aaa;
+}
+
+.tg-user-clear {
+  background: none;
+  border: none;
+  color: #777;
+  font-size: 20px;
+  cursor: pointer;
+}

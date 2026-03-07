@@ -1,0 +1,179 @@
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #1A2026;
+  padding-top: 8px;
+  padding-bottom: calc(5px + env(safe-area-inset-bottom)); /* 🔹 safe-area qo‘shildi */
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+
+
+.footer-content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.footer-item {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+  transition: all 0.2s;
+}
+
+.footer-item.active {
+  color: #00d4ff; /* ko'k rang */
+}
+
+.footer-item.center {
+  transform: translateY(-20px); /* o'rtadagini yuqoriga ko'tarish */
+}
+
+.footer-icon {
+  width: 28px;
+  height: 28px;
+  position: relative;
+}
+
+/* Chap icon - handshake */
+.invite-icon {
+  background: #007bff; /* ko'k */
+}
+
+/* O'rta icon - atom (glow effect) */
+.home-icon {
+  width: 56px;
+  height: 56px;
+  background: radial-gradient(circle, #00d4ff, #001a33);
+}
+
+/* O'ng icon - profile */
+.profile-icon {
+  background: #444;
+}
+
+/* Icon ichidagi oddiy shakllar (SVG o'rniga CSS bilan) */
+.invite-icon::before,
+.profile-icon::before,
+.home-icon::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.invite-icon::before {
+  width: 16px;
+  height: 16px;
+  background: white;
+  border-radius: 50% 50% 50% 0;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.profile-icon::before {
+  width: 14px;
+  height: 14px;
+  border: 3px solid #aaa;
+  border-radius: 50%;
+  border-bottom-color: transparent;
+}
+
+.home-icon::before {
+  width: 20px;
+  height: 20px;
+  background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L2 12h3v8h14v-8h3L12 2z"/></svg>') center/cover;
+}
+
+/* O'rta tugmani kattaroq qilish va yuqoriga ko'tarish */
+.footer-item.center {
+  transform: translateY(-20px); /* yuqoriga ko'tarish */
+}
+
+.home-icon {
+  width: 56px;
+  height: 56px;
+  background: radial-gradient(circle, #00d4ff, #001a33);
+  box-shadow: 0 4px 15px rgba(0, 212, 255, 0.4);
+}
+
+/* Home icon ichidagi yulduzcha yoki boshqa belgi (masalan, uy shakli) */
+.home-icon::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 28px;
+  height: 28px;
+  background: white;
+  mask: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" fill="white"/></svg>') center/cover;
+  -webkit-mask: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" fill="white"/></svg>') center/cover;
+}
+
+
+/* ICONLAR */
+.footer-icon {
+  width: 22px;
+  height: 22px;
+  margin-bottom: 4px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* 🧲 Invite */
+.invite-icon {
+  background-image: url("/icons/invite.svg"); /* xohlasang o‘zgartir */
+}
+
+/* ⭐ Soon */
+.soon-icon {
+  background-image: url("/icons/home.svg");
+}
+
+/* 👤 Profile */
+.profile-icon {
+  background-image: url("/icons/user.svg");
+}
+
+/* 🔔 TEZ KUNDA ALERT */
+.soon-alert {
+  position: fixed;
+  bottom: 90px;
+  left: 50%;
+  transform: translateX(-50%) scale(0.8);
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: #fff;
+  padding: 12px 22px;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 600;
+  animation: popFade 0.3s ease-out forwards;
+  z-index: 9999;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+@keyframes popFade {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+}

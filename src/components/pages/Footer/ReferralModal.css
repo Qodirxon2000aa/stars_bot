@@ -1,0 +1,236 @@
+/* ================= OVERLAY ================= */
+.referral-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  z-index: 9999;
+  transition: background 0.3s ease;
+}
+
+.referral-overlay.show {
+  background: rgba(0, 0, 0, 0.65);
+}
+
+.referral-overlay.hide {
+  background: rgba(0, 0, 0, 0);
+}
+
+/* ================= FULLSCREEN MODAL ================= */
+.referral-fullscreen {
+  width: 100%;
+  height: 100vh;
+  background: #1A2026;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.25s ease;
+}
+
+/* OPEN */
+.referral-fullscreen.slide-in {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* CLOSE */
+.referral-fullscreen.slide-out {
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+/* ================= CLOSE BUTTON ================= */
+.close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: #2a323a;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* ================= CONTENT (🔥 5% TOP PADDING) ================= */
+.referral-content {
+  flex: 1;
+  overflow-y: auto;
+
+  /* 🔥 ASOSIY O‘ZGARISH */
+  padding: calc(5% + env(safe-area-inset-top)) 20px 40px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  color: #fff;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ================= LOTTIE ================= */
+.animation {
+  width: 100%;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.animation svg,
+.animation canvas {
+  width: 180px !important;
+  height: 180px !important;
+  border-radius: 12px;
+}
+
+/* ================= TEXT ================= */
+.referral-content h2 {
+  font-size: 24px;
+  margin: 12px 0;
+}
+
+.referral-content p {
+  font-size: 15px;
+  color: #aaa;
+  margin-bottom: 24px;
+}
+
+/* ================= INVITED COUNTER ================= */
+.invited-counter {
+  width: 100%;
+  max-width: 400px;
+  height: 120px;
+  background: linear-gradient(
+    135deg,
+    rgba(138, 43, 226, 0.15),
+    rgba(75, 0, 130, 0.15)
+  );
+  border: 1px solid rgba(138, 43, 226, 0.3);
+  border-radius: 20px;
+  padding: 24px 20px;
+  margin-bottom: 24px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.invited-counter-label {
+  font-size: 14px;
+  color: #aaa;
+  font-weight: 500;
+}
+
+.invited-counter-value {
+  font-size: 48px;
+  font-weight: bold;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  line-height: 1;
+}
+
+.invited-counter-value .icon {
+  font-size: 40px;
+}
+
+/* ================= ACTION BUTTONS ================= */
+.action-buttons {
+  width: 100%;
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.btn-invite {
+  flex: 1;
+  background: linear-gradient(135deg, #a855f7, #8b5cf6);
+  color: #fff;
+  height: 45px;
+  border: none;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-invite:active {
+  transform: scale(0.98);
+}
+
+.btn-copy {
+  width: 45px;
+  height: 45px;
+  background: linear-gradient(135deg, #a855f7, #8b5cf6);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.btn-copy:active {
+  transform: scale(0.95);
+}
+
+.btn-copy svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* ================= WORD ================= */
+.worddd {
+  width: 100%;
+  padding: 5%;
+}
+
+.worddd p {
+  font-size: 17px;
+}
+
+/* ================= SMALL SCREENS ================= */
+@media (max-height: 650px) {
+  .animation {
+    height: 160px;
+  }
+
+  .animation svg,
+  .animation canvas {
+    width: 140px !important;
+    height: 140px !important;
+  }
+
+  .invited-counter-value {
+    font-size: 40px;
+  }
+
+  .invited-counter-value .icon {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 380px) {
+  .btn-invite {
+    font-size: 14px;
+  }
+
+  .btn-copy {
+    width: 56px;
+    height: 56px;
+  }
+}

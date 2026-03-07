@@ -1,0 +1,234 @@
+/* ================= VARIABLES ================= */
+:root {
+  --bg: #0f0f12;
+  --card: #18181d;
+  --line: #2a2a32;
+  --text: #ffffff;
+  --muted: #9a9aa1;
+  --accent: #4caf50;
+  --danger: #f44336;
+
+  --radius: 16px;
+  --transition: 0.3s ease;
+}
+
+/* ================= FULLSCREEN OVERLAY ================= */
+.user-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 9999;
+
+  display: flex;
+  flex-direction: column;
+
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.user-modal-overlay.closing {
+  animation: fadeOut 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0 }
+  to { opacity: 1 }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1 }
+  to { opacity: 0 }
+}
+
+/* ================= FULLSCREEN PAGE ================= */
+.user-modal {
+  width: 100%;
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+
+  display: flex;
+  flex-direction: column;
+
+  animation: slideUp 0.35s ease forwards;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ================= HEADER ================= */
+.user-modal-header {
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.user-modal-profile {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.user-modal-avatar {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #333;
+}
+
+.user-modal-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.user-modal-info h3 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.user-modal-info p {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* ================= BODY ================= */
+.user-modal-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+}
+
+.user-modal-title {
+  text-align: center;
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+
+/* ================= TABS ================= */
+.history-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.history-tab {
+  flex: 1;
+  padding: 10px;
+  border-radius: 12px;
+  background: var(--card);
+  border: none;
+  color: var(--muted);
+  font-size: 13px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.history-tab.active {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* ================= LIST ROW ================= */
+.user-table-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 14px;
+  margin-bottom: 10px;
+
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.user-table-row:hover {
+  background: #202028;
+}
+
+.row-type {
+  font-size: 14px;
+}
+
+.row-amount {
+  font-weight: 600;
+}
+
+.row-date {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.row-toggle {
+  font-size: 18px;
+  opacity: 0.6;
+}
+
+/* ================= DETAILS ================= */
+.user-row-details {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.35s ease;
+}
+
+.user-row-details.expanded {
+  max-height: 500px;
+  opacity: 1;
+}
+
+.user-row-details > div {
+  background: #1c1c22;
+  border-radius: 14px;
+  padding: 14px;
+  margin-bottom: 12px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* ================= STATUS ================= */
+.status-badge {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #fff;
+}
+
+/* ================= CLOSE BUTTON ================= */
+.user-modal-close {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+
+  border: none;
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  font-size: 22px;
+  cursor: pointer;
+
+  transition: var(--transition);
+}
+
+.user-modal-close:hover {
+  background: rgba(255,255,255,0.2);
+}

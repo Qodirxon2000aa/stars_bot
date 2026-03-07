@@ -1,0 +1,153 @@
+/* OVERLAY */
+.am-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  transition: opacity 0.3s ease;
+}
+
+/* MODAL */
+.am-modal {
+  width: 90%;
+  max-width: 380px;
+  padding: 32px 28px;
+  border-radius: 24px;
+  background: #ffffff;
+  color: #1a1a1a;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ICON */
+.am-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+  font-weight: 600;
+  transition: transform 0.3s ease;
+}
+
+/* LABEL */
+.am-label {
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 600;
+  opacity: 0.6;
+  margin-bottom: 8px;
+}
+
+/* TITLE */
+.am-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #1a1a1a;
+}
+
+/* MESSAGE */
+.am-message {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #666;
+  margin-top: 8px;
+}
+
+/* BUTTON */
+.am-btn {
+  margin-top: 24px;
+  height: 48px;
+  width: 100%;
+  border-radius: 12px;
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  background: var(--accent);
+  color: #fff;
+  transition: all 0.2s ease;
+}
+
+.am-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.am-btn:active {
+  transform: translateY(0);
+}
+
+/* TYPES */
+.success { 
+  --accent: #10b981;
+  --bg: #ecfdf5;
+}
+.error { 
+  --accent: #ef4444;
+  --bg: #fef2f2;
+}
+.warning { 
+  --accent: #f59e0b;
+  --bg: #fffbeb;
+}
+.info { 
+  --accent: #3b82f6;
+  --bg: #eff6ff;
+}
+
+.am-icon {
+  color: var(--accent);
+}
+
+.am-modal {
+  background: linear-gradient(to bottom, var(--bg), #ffffff);
+}
+
+/* TOAST */
+.am-toast {
+  padding: 20px 24px;
+  max-width: 320px;
+}
+
+.am-toast .am-label,
+.am-toast .am-title,
+.am-toast .am-btn {
+  display: none;
+}
+
+.am-toast .am-message {
+  margin-top: 0;
+}
+
+/* ANIMATIONS */
+.am-in {
+  animation: modalIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.am-out {
+  animation: modalOut 0.3s ease forwards;
+}
+
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes modalOut {
+  to {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+}

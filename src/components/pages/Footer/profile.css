@@ -1,0 +1,424 @@
+/* Overlay */
+.profile-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(8px);
+  z-index: 9999;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Panel */
+.profile-panel {
+  width: 100%;
+  height: 100%;
+  background: #1c1c1e;
+  color: white;
+  padding: 24px 20px;
+  animation: slideIn 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+}
+
+/* Close */
+.profile-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 32px;
+  color: white;
+  cursor: pointer;
+}
+
+/* Header */
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.profile-avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 14px;
+}
+
+.profile-header h2 {
+  font-size: 22px;
+  margin: 0;
+}
+
+.profile-header p {
+  color: #aaa;
+  margin-top: 4px;
+}
+
+/* List */
+.profile-list {
+  margin-top: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.profile-item {
+  background: #2c2c2e;
+  border-radius: 16px;
+  padding: 14px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Animation */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+
+/* Overlay — o'zgartirish shart emas, allaqachon to'g'ri */
+.profile-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(8px);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;     /* o'zgartirdim: center */
+  align-items: center;         /* qo'shdim: vertical center */
+}
+
+/* Panel — asosiy o'zgarishlar */
+.profile-panel {
+  width: 100%;                 /* saqlaymiz */
+  max-width: 700px;            /* ixtiyoriy: katta ekranda juda keng bo'lmasligi uchun */
+  height: 100%;                 /* to'liq balandlik */
+  max-height: 100%;             /* ixtiyoriy: yuqoridan/pastdan biroz bo'sh joy qoldirish uchun */
+  background: #1c1c1e;
+  color: white;
+  padding: 24px 20px;
+  border-radius: 16px;         /* qo'shdim: chiroyli ko'rinish uchun (mobilada ham ishlaydi) */
+  overflow-y: auto;            /* kontent ko'p bo'lsa scroll */
+  animation: fadeInScale 0.45s cubic-bezier(0.22, 1, 0.36, 1); /* animatsiyani o'zgartirdim */
+  position: relative;
+}
+
+/* Yangi animatsiya (centerdan chiqish uchun yaxshiroq) */
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Qolgan qismlar o'zgarmaydi */
+
+/* Overlay — ekranni 100% qamrab turadi */
+.profile-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(8px);
+  z-index: 9999;
+  display: flex;
+  justify-content: flex-end;  /* panel o'ng tomondan chiqadi */
+  align-items: stretch;      /* panel to'liq balandlikda bo'lishi uchun */
+}
+
+/* Panel — o'ngdan chiqadigan to'liq ekran panel (mobilada) */
+.profile-panel {
+  width: 100%;                    /* mobilada 100% */
+  max-width: 700px;               /* desktopda cheklangan kenglik */
+  height: 100%;
+  background: #1c1c1e;
+  color: white;
+  padding: 24px 20px;
+  position: relative;
+  overflow-y: auto;
+  box-shadow: -8px 0 32px rgba(0,0,0,0.3); /* ixtiyoriy: chiroyli soya */
+
+  /* Ochilish animatsiyasi */
+  animation: slideInRight 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Modal yopilganda qo'shiladigan klass (JS orqali) */
+.profile-panel.closing {
+  animation: slideOutRight 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Ochilish: chapdan o'ngga (o'ng tomondan surilib chiqish) */
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Yopilish: o'ngga surilib ketish */
+@keyframes slideOutRight {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.profile-history-btn {
+  margin-top: 16px;
+  width: 100%;
+  padding: 14px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  color: #fff;
+  background: linear-gradient(135deg, #6a5af9, #8f7bff);
+  transition: 0.3s;
+}
+
+.profile-history-btn:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(106, 90, 249, 0.4);
+}
+
+
+@media (max-width: 420px) {
+  .profile-header h2 {
+    font-size: 19px;
+  }
+
+  .profile-header p {
+    font-size: 13px;
+  }
+
+  .profile-item {
+    font-size: 14px;
+  }
+
+  .profile-history-btn {
+    font-size: 14px;
+  }
+
+  .profile-avatar {
+    width: 84px;
+    height: 84px;
+  }
+}
+
+/* 🔹 JUDA KICHIK EKRAN (≤ 360px) */
+@media (max-width: 360px) {
+  .profile-header h2 {
+    font-size: 17px;
+  }
+
+  .profile-header p {
+    font-size: 12px;
+  }
+
+  .profile-item {
+    font-size: 13px;
+  }
+
+  .profile-history-btn {
+    font-size: 13px;
+    padding: 12px;
+  }
+
+  .profile-avatar {
+    width: 72px;
+    height: 72px;
+  }
+}
+
+
+/* OVERLAY */
+.profile-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  z-index: 9999;
+  display: flex;
+  justify-content: flex-end;
+  align-items: stretch;
+}
+
+/* PANEL */
+.profile-panel {
+  width: 100%;
+  max-width: 700px;
+  height: 100%;
+  background: #1c1c1e;
+  color: #fff;
+  padding: 24px 20px;
+  position: relative;
+  overflow-y: auto;
+  box-shadow: -8px 0 32px rgba(0, 0, 0, 0.3);
+  animation: slideInRight 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* CLOSE */
+.profile-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 32px;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* HEADER */
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.profile-avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 14px;
+}
+
+.profile-header h2 {
+  font-size: 22px;
+  margin: 0;
+}
+
+.profile-header p {
+  color: #aaa;
+  margin-top: 4px;
+}
+
+/* LIST */
+.profile-list {
+  margin-top: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.profile-item {
+  background: #2c2c2e;
+  border-radius: 16px;
+  padding: 14px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ICON + TEXT */
+.item-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ICON */
+.item-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 5px; /* 🔥 */
+  background: linear-gradient(135deg, #6a5af9, #8f7bff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 17px;
+  flex-shrink: 0;
+}
+
+/* CLICKABLE */
+.profile-item.clickable {
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.profile-item.clickable:hover {
+  background: #3a3a3c;
+  transform: translateY(-1px);
+}
+
+/* HISTORY BUTTON */
+.profile-history-btn {
+  margin-top: 16px;
+  width: 100%;
+  padding: 14px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  color: #fff;
+  background: linear-gradient(135deg, #6a5af9, #8f7bff);
+  transition: 0.3s;
+}
+
+.profile-history-btn:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(106, 90, 249, 0.4);
+}
+
+/* ANIMATION */
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 420px) {
+  .profile-avatar {
+    width: 84px;
+    height: 84px;
+  }
+
+  .item-icon {
+    width: 30px;
+    height: 30px;
+    font-size: 15px;
+  }
+
+  .profile-header h2 {
+    font-size: 19px;
+  }
+
+  .profile-item {
+    font-size: 14px;
+  }
+}
+
+.profile-overlay.closing {
+  animation: overlayOut 0.3s ease forwards;
+}
+
+@keyframes overlayOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}

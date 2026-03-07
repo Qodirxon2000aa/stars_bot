@@ -1,0 +1,382 @@
+/* src/pages/events/Events.css */
+.events-page {
+    width: 100%;
+  background: #1A2026;
+  color: white;
+}
+
+/* ================= EVENT CARD ================= */
+.event-card {
+  background: rgba(30, 30, 50, 0.6);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  max-width: 500px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(100, 100, 255, 0.2);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.event-card:active {
+  transform: scale(0.98);
+}
+
+.event-header {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.gift-icon {
+  font-size: 32px;
+}
+
+.event-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0;
+  color: #e0e0ff;
+}
+
+.event-description {
+  font-size: 17px;
+  color: #b0b0ff;
+  margin: 16px 0 24px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.progress-container {
+  margin-top: 20px;
+}
+
+.progress-bar {
+  height: 14px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 12px;
+  border: 1px solid rgba(100, 100, 255, 0.3);
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #6a11cb, #2575fc);
+  border-radius: 10px;
+  transition: width 1.5s ease-in-out;
+  box-shadow: 0 0 15px rgba(101, 17, 203, 0.5);
+}
+
+.progress-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  font-weight: 600;
+  color: #d0d0ff;
+}
+
+/* ================= LEADERBOARD ================= */
+.leaderboard-card {
+  background: rgba(30, 30, 50, 0.6);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 24px;
+  margin: 20px auto;
+  max-width: 500px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(100, 100, 255, 0.2);
+}
+
+.leaderboard-header {
+    justify-content: center;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.stats-icon {
+  font-size: 32px;
+}
+
+.leaderboard-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0;
+  color: #e0e0ff;
+}
+
+.leaderboard-subtitle {
+  font-size: 15px;
+  color: #a0a0ff;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.tab {
+  padding: 10px 24px;
+  background: rgba(50, 50, 80, 0.4);
+  border: none;
+  border-radius: 30px;
+  color: #ccc;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.tab.active {
+  background: linear-gradient(90deg, #6a11cb, #2575fc);
+  color: white;
+  box-shadow: 0 0 15px rgba(101, 17, 203, 0.4);
+}
+
+/* Leaderboard items */
+.leaderboard-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.leaderboard-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  background: rgba(40, 40, 70, 0.3);
+  border-radius: 16px;
+  border: 1px solid rgba(100, 100, 255, 0.15);
+}
+
+.rank-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 50px;
+}
+
+.rank-number {
+  font-size: 18px;
+  font-weight: 700;
+  color: #aaa;
+}
+
+.trophy {
+  font-size: 24px;
+}
+
+.username {
+  flex: 1;
+  font-size: 17px;
+  font-weight: 600;
+  color: #e0e0ff;
+}
+
+.amount {
+  font-size: 17px;
+  font-weight: 700;
+  color: #6c5ce7;
+}
+
+/* ================= MODAL ================= */
+.event-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.event-modal-overlay.show {
+  opacity: 1;
+}
+
+.event-modal {
+  width: 90%;
+  max-width: 380px;
+  background: #0f172a;
+  border-radius: 20px;
+  padding: 22px;
+  color: #fff;
+  transform: scale(0.85) translateY(20px);
+  opacity: 0;
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+.event-modal.open {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+
+.event-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #aaa;
+  cursor: pointer;
+}
+
+.event-modal-title {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.event-modal-text p {
+  margin: 8px 0;
+  color: #cbd5e1;
+}
+
+.event-gift {
+  margin: 18px auto;
+  width: 80px;
+  height: 80px;
+  background: #2563eb;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+}
+
+.event-ok-btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 14px;
+  border: none;
+  background: #3b82f6;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* ================= MOBILE FIX ================= */
+@media (max-width: 480px) {
+  .events-page {
+    padding: 14px;
+  }
+
+  /* Event card */
+  .event-card,
+  .leaderboard-card {
+    padding: 18px;
+    border-radius: 16px;
+  }
+
+  .gift-icon,
+  .stats-icon {
+    font-size: 26px;
+  }
+
+  .event-title,
+  .leaderboard-title {
+    font-size: 18px;
+  }
+
+  .event-description {
+    font-size: 14px;
+    margin: 12px 0 18px;
+  }
+
+  /* Progress */
+  .progress-labels {
+    font-size: 14px;
+  }
+
+  .progress-bar {
+    height: 12px;
+  }
+
+  /* Tabs */
+  .tab {
+    padding: 8px 18px;
+    font-size: 14px;
+  }
+
+  /* Leaderboard */
+  .leaderboard-subtitle {
+    font-size: 13px;
+  }
+
+  .leaderboard-item {
+    padding: 12px 14px;
+  }
+
+  .rank-number {
+    font-size: 15px;
+  }
+
+  .trophy {
+    font-size: 20px;
+  }
+
+  .username {
+    font-size: 15px;
+  }
+
+  .amount {
+    font-size: 15px;
+  }
+}
+
+
+/* Loading Spinner */
+.loading-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+
+.events-page-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(255, 255, 255, 0.1);
+  border-top: 5px solid #fff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
