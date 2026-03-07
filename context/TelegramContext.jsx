@@ -17,40 +17,26 @@ export const TelegramProvider = ({ children }) => {
     return initData && initData.length > 0 ? initData : null;
   };
 
-  /* ========================= 🌐 FETCH HELPER (GET) ========================= */
-  const apiFetch = async (endpoint, extraParams = {}) => {
+  /* ========================= 🌐 FETCH HELPER (POST) ========================= */
+  const apiFetch = async (endpoint, params = {}) => {
     const initData = getInitData();
-    const extraQuery = new URLSearchParams(extraParams).toString();
-
-    let url;
-    if (initData) {
-      url = `https://tezpremium.uz/webapp/${endpoint}?initData=${encodeURIComponent(initData)}${extraQuery ? "&" + extraQuery : ""}`;
-    } else {
-      const params = new URLSearchParams({ user_id: DEV_USER_ID, ...extraParams });
-      url = `https://tezpremium.uz/webapp/${endpoint}?${params}`;
-    }
-
-    const res = await fetch(url);
+    const body = new URLSearchParams({
+      ...(initData ? { initData } : { user_id: DEV_USER_ID }),
+      ...params,
+    });
+    const res = await fetch(`https://tezpremium.uz/webapp/${endpoint}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: body.toString(),
+    });
     return res.json();
   };
 
-  /* ========================= 👤 USER FETCH (POST) ========================= */
+  /* ========================= 👤 USER FETCH ========================= */
   const fetchUserFromApi = async () => {
     try {
       setLoading(true);
-      const initData = getInitData();
-
-      const body = new URLSearchParams(
-        initData ? { initData } : { user_id: DEV_USER_ID }
-      );
-
-      const res = await fetch("https://tezpremium.uz/webapp/get_user.php", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: body.toString(),
-      });
-
-      const data = await res.json();
+      const data = await apiFetch("get_user.php");
       const userData = data.ok
         ? { balance: data.data?.balance || "0", ...data.data }
         : { balance: "0" };
