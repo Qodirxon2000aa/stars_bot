@@ -20,28 +20,18 @@ export const TelegramProvider = ({ children }) => {
   /* ========================= 🌐 FETCH HELPER ========================= */
   const apiFetch = async (endpoint, extraParams = {}) => {
     const initData = getInitData();
+    const extraQuery = new URLSearchParams(extraParams).toString();
 
+    let url;
     if (initData) {
-      // REAL Telegram — GET orqali initData yuborish
-      const params = new URLSearchParams({
-        initData: initData,
-        ...extraParams,
-      });
-      const res = await fetch(
-        `https://tezpremium.uz/webapp/${endpoint}?${params}`
-      );
-      return res.json();
+      url = `https://tezpremium.uz/webapp/${endpoint}?initData=${encodeURIComponent(initData)}${extraQuery ? "&" + extraQuery : ""}`;
     } else {
-      // DEV MODE — user_id bilan GET
-      const params = new URLSearchParams({
-        user_id: DEV_USER_ID,
-        ...extraParams,
-      });
-      const res = await fetch(
-        `https://tezpremium.uz/webapp/${endpoint}?${params}`
-      );
-      return res.json();
+      const params = new URLSearchParams({ user_id: DEV_USER_ID, ...extraParams });
+      url = `https://tezpremium.uz/webapp/${endpoint}?${params}`;
     }
+
+    const res = await fetch(url);
+    return res.json();
   };
 
   /* ========================= 👤 USER FETCH ========================= */
@@ -79,9 +69,7 @@ export const TelegramProvider = ({ children }) => {
   const fetchPayments = async () => {
     try {
       const data = await apiFetch("payments.php");
-      setPayments(
-        data.ok && Array.isArray(data.payments) ? data.payments : []
-      );
+      setPayments(data.ok && Array.isArray(data.payments) ? data.payments : []);
     } catch (err) {
       console.error("❌ fetchPayments error:", err);
       setPayments([]);
@@ -180,7 +168,6 @@ export const TelegramProvider = ({ children }) => {
         isTelegram: true,
       });
     } else {
-      // DEV MODE
       setUser({
         id: DEV_USER_ID,
         first_name: "Dev",
