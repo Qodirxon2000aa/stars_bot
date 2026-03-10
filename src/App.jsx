@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Dashboard from "./components/pages/Dashboard";
 import Off from "./components/pages/Off/Off";
+import WelcomeAnimation from "./components/WelcomeAnimation";
+import OpenBudgetModal from "./Openbudgetmodal";
 import { TelegramProvider } from "../context/TelegramContext";
 
 const ADMIN_IDS = ["7521806735", "6834662342"];
@@ -9,8 +11,9 @@ const ADMIN_IDS = ["7521806735", "6834662342"];
 function App() {
   const [botStatus, setBotStatus] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [showAnimation, setShowAnimation] = useState(true);
+  const [showModal, setShowModal] = useState(false);         // ← yangi
 
-  // Telegram bo'lmasa (Chrome dev) → default dev ID ishlatiladi
   const tgUserId = String(
     window.Telegram?.WebApp?.initDataUnsafe?.user?.id || "7521806735"
   );
@@ -34,8 +37,16 @@ function App() {
       });
   }, []);
 
-  if (loading) {
-    return <div></div>;
+  // Animatsiya tugagach → modal ochamiz
+  const handleAnimationFinish = () => {
+    setShowAnimation(false);
+    setShowModal(true);   // ← animatsiya tugagach modal
+  };
+
+  if (loading) return <div></div>;
+
+  if (showAnimation) {
+    return <WelcomeAnimation onFinish={handleAnimationFinish} />;
   }
 
   const MainComponent = isAdmin || botStatus === "on" ? Dashboard : Off;
@@ -49,6 +60,12 @@ function App() {
           <Route path="*" element={<Navigate to="/dashboard" replace />} />
         </Routes>
       </Router>
+
+      {/* Modal — dashboard ustida */}
+      <OpenBudgetModal
+        isOpen={showModal}
+        onClose={() => setShowModal(false)}
+      />
     </TelegramProvider>
   );
 }
