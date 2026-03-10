@@ -17,7 +17,7 @@ const OpenBudgetModal = ({ isOpen, onClose }) => {
   };
 
   const handleVote = () => {
-    window.open("https://t.me/boost/tezpremium", "_blank");
+    window.open("https://t.me/legenda_ovoz", "_blank");
   };
 
   if (!isOpen) return null;
