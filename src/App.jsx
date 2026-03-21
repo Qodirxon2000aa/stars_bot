@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import Dashboard from "./components/pages/Dashboard";
 import Off from "./components/pages/Off/Off";
 import WelcomeAnimation from "./components/WelcomeAnimation";
-import OpenBudgetModal from "./Openbudgetmodal";
 import { TelegramProvider } from "../context/TelegramContext";
 
 const ADMIN_IDS = ["7521806735", "6834662342"];
@@ -62,10 +61,7 @@ function App() {
       </Router>
 
       {/* Modal — dashboard ustida */}
-      <OpenBudgetModal
-        isOpen={showModal}
-        onClose={() => setShowModal(false)}
-      />
+      
     </TelegramProvider>
   );
 }
